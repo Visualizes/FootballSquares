@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:orderInCategory="100"
+        android:id="@+id/delete"
+        android:title="Delete"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:orderInCategory="200"
+        android:id="@+id/fillboard"
+        android:title="Fill\nBoard"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:orderInCategory="300"
+        android:id="@+id/skipturn"
+        android:title="Skip\nTurn"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:orderInCategory="400"
+        android:id="@+id/freezeturn"
+        android:title="Freeze\nTurn"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:orderInCategory="500"
+        android:id="@+id/next"
+        android:title="Done"
+        android:icon="@drawable/rightwhite"
+        app:showAsAction="ifRoom"/>
+
+</menu>

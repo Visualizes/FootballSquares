@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   
+    <TextView
+        android:text="test"
+        android:gravity="center|start|left"
+        android:padding="4dp"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:id="@+id/nameItem"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+
+    <ImageButton
+        android:id="@+id/editName"
+        android:layout_margin="4dp"
+        android:background="@drawable/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/removeName"
+        android:layout_margin="4dp"
+        android:background="@drawable/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/topPanel"
+        android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/home"
+            android:id="@+id/nav_home"
+            android:title="Home" />
+        <item
+            android:icon="@drawable/save"
+            android:id="@+id/nav_save"
+            android:title="Save Game" />
+        <item
+            android:icon="@drawable/load"
+            android:id="@+id/nav_load"
+            android:title="Load Game" />
+    </group>
+
+    <item
+        android:title="Create Game">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/adduser"
+                    android:id="@+id/nav_add_people"
+                    android:title="Add People" />
+                <item
+                    android:icon="@drawable/setup"
+                    android:id="@+id/nav_set_up"
+                    android:title="Set Up Board" />
+                <item
+                    android:icon="@drawable/choose"
+                    android:id="@+id/nav_game"
+                    android:title="Select Game" />
+                <item
+                    android:icon="@drawable/sport"
+                    android:id="@+id/nav_main"
+                    android:title="Main Board" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:title="Online">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/share"
+                    android:id="@+id/nav_share"
+                    android:title="Share Game" />
+                <item
+                    android:icon="@drawable/join"
+                    android:id="@+id/nav_join"
+                    android:title="Join Game" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="General">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/info"
+                    android:id="@+id/nav_about"
+                    android:title="About" />
+                <item
+                    android:icon="@drawable/help"
+                    android:id="@+id/nav_help"
+                    android:title="Help" />
+                <item
+                    android:icon="@drawable/feedback"
+                    android:id="@+id/nav_feedback_report"
+                    android:title="Feedback/Report Error" />
+            </group>
+        </menu>
+    </item>
+</menu>
