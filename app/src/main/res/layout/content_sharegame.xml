@@ -10,15 +10,20 @@
     tools:showIn="@layout/app_bar_sharegame"
     tools:context=".ShareGameActivity">
 
+    <View style="@style/Divider" />
+
     <TextView
+        android:textIsSelectable="true"
         android:id="@+id/code"
-        android:textSize="26dp"
+        android:textSize="32dp"
         android:textColor="@color/white"
         android:padding="16dp"
         android:gravity="center"
         android:text="Code: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <View style="@style/Divider" />
 
     <LinearLayout
         android:gravity="bottom|center"
@@ -28,15 +33,48 @@
         android:layout_height="0dp">
 
         <ImageButton
+            android:background="@drawable/share_facebook3"
             android:layout_margin="8dp"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
 
             />
         <ImageButton
+            android:background="@drawable/share_twitter3"
             android:layout_margin="8dp"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageButton
+            android:background="@drawable/share_messenger2"
+            android:layout_margin="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            />
+
+        <ImageButton
+            android:background="@drawable/share_gplus4"
+            android:layout_margin="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            />
+        <ImageButton
+            android:background="@drawable/share_gmail2"
+            android:layout_margin="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
 
             />
     </LinearLayout>
@@ -44,19 +82,20 @@
     <LinearLayout
         android:gravity="center|top"
         android:orientation="horizontal"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <ImageButton
+            android:background="@drawable/share_sms3"
             android:layout_margin="8dp"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             />
         <ImageButton
+            android:background="@drawable/share_copy"
             android:layout_margin="8dp"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
 
             />
 

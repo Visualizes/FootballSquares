@@ -65,19 +65,11 @@ public class BoardSetUpActivity extends AppCompatActivity
 
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_set_up);
 
-        for (int column = 0; column < 10; column++) {
-            for (int row = 0; row < 10; row++) {
-
-                onClickBoardData = new BoardSetUpOnClickListener(row, column, getSupportActionBar(), userChoices);
-                board[column][row].setOnClickListener(onClickBoardData);
-
-            }//end of y for loop
-        }//end of i for loop
-
-        System.out.println("ayyyyyyyy");
         getSupportActionBar().setTitle("It's " + userChoices.getArrayOfNames().get(BoardSetUpOnClickListener.nameIndex) + "'s turn.");
 
     }//onCreate end
+
+
 
     private void initializeBoard(){
 
@@ -92,12 +84,14 @@ public class BoardSetUpActivity extends AppCompatActivity
         for (int i = 0; i < 10; i++){
             for (int y = 0; y < 10; y++) {
                 int position = (i*10) + y;
-                Log.d("position", String.valueOf(position) + "i: " + i + "y: " + y);
                 if (userChoices.getNamesOnBoard().size() < 100) {
                     userChoices.getNamesOnBoard().add("");
                 }
                 board[i][y] = (TextView) rows[i].getChildAt(y);
                 board[i][y].setText(userChoices.getNamesOnBoard().get(position));
+
+                onClickBoardData = new BoardSetUpOnClickListener(i, y, getSupportActionBar(), userChoices);
+                board[i][y].setOnClickListener(onClickBoardData);
             }//loop y end
         }//loop i end
     }//method end
@@ -106,7 +100,7 @@ public class BoardSetUpActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
 

@@ -56,10 +56,10 @@ public class NavigationViewController {
         if (userChoices.getArrayOfNames().size() > 1){
             boardSetUp.setEnabled(true);
         }
-        if (userChoices.getNamesOnBoard().size() == 100){
+        if (boardSetUp.isEnabled() && userChoices.getNamesOnBoard().size() == 100){
             selectGame.setEnabled(true);
         }
-        if (userChoices.getGame() != null){
+        if (boardSetUp.isEnabled() && selectGame.isEnabled() && userChoices.getGame() != null){
             mainBoard.setEnabled(true);
             shareGame.setEnabled(true);
             saveGame.setEnabled(true);

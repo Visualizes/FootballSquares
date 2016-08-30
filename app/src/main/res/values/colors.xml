@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#663300</color>
-    <color name="colorPrimaryDark">#3E2723</color>
+    <color name="colorPrimary">#F57C00</color>
+    <color name="colorPrimaryDark">#EF6C00</color>
     <color name="colorAccent">#FFFFFF</color>
 
+    <color name="blacktrans">#20000000</color>
     <color name="darkmetalblue">#546E7A</color>
     <color name="metalblue">#CFD8DC</color>
     <color name="white">#FFFFFFFF</color>
     <color name="freeze">#03A9F4</color>
     <color name="purpletrans">#99311B92</color>
     <color name="brownstrans">#3E2723</color>
-    <color name="orangetrans">#E6EE8529</color>
-    <color name="orangelight">#EE8529</color>
-    <color name="orangedark">#D87A23</color>
+    <color name="orangetrans">#E6F57C00</color>
+    <color name="orangelight">#F57C00</color>
+    <color name="orangedark">#EF6C00</color>
     <color name="darkgreen">#2E7D32</color>
     <color name="green">#43A047</color>
     <color name="lightgreen">#81C784</color>

@@ -17,7 +17,9 @@
     android:tag="small"
     tools:showIn="@layout/app_bar_previewgame">
 
-    <View style="@style/Divider" />
+    <View
+        android:id="@+id/divider1"
+        style="@style/Divider" />
 
     <TextView
         android:gravity="center"
@@ -27,7 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <View style="@style/Divider" />
+    <View
+        android:id="@+id/divider2"
+        style="@style/Divider" />
 
     <include
         android:id="@+id/board"
@@ -36,7 +40,9 @@
         layout="@layout/table"
         />
 
-    <View style="@style/Divider" />
+    <View
+        android:id="@+id/divider3"
+        style="@style/Divider" />
 
     <ListView
         android:id="@+id/listview"
@@ -44,5 +50,8 @@
         android:layout_height="192dp">
     </ListView>
 
+    <View
+        android:id="@+id/divider4"
+        style="@style/Divider" />
 
 </LinearLayout>

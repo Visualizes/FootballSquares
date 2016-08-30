@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
+        app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -28,11 +29,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <android.support.design.widget.FloatingActionButton
+            app:elevation="0dp"
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_input_add" />
+            android:tint="@color/green"
+            android:src="@android:drawable/ic_input_add"
+            />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

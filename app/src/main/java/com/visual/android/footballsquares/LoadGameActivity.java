@@ -15,10 +15,6 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by Rami on 2/12/2016.
  */
@@ -27,7 +23,7 @@ public class LoadGameActivity extends AppCompatActivity
 
     private UserChoices userChoices;
     private NavigationViewController navigationViewController;
-    private LoadGameAdapterTest2 loadGameAdapterTest2;
+    private LoadGameAdapter loadGameAdapter;
 
 
     @Override
@@ -46,7 +42,7 @@ public class LoadGameActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -54,27 +50,16 @@ public class LoadGameActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_load);
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_load);
 
-        //new LoadGamesInBackground().execute();
+        new LoadGamesInBackground().execute();
 
 
     }
-/*
+
     private class LoadGamesInBackground extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... params){
-            List<String> keyEntries = new ArrayList<>();
-            TinyDB tinyDB = new TinyDB(LoadGameActivity.this);
-
-            @SuppressWarnings("unchecked")
-            Map<String, UserChoices> allEntries = (Map<String,UserChoices>)((tinyDB.getAll()));
-
-            for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                //Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
-                keyEntries.add(entry.getKey());
-            }
-            //loadGameAdapter = new LoadGameAdapter(LoadGameActivity.this, keyEntries);
-            //loadGameAdapterTest = new LoadGameAdapterTest(LoadGameActivity.this, allEntries);
-            loadGameAdapterTest2 = new LoadGameAdapterTest2(LoadGameActivity.this, keyEntries, userChoices);
+            DatabaseHandler db = new DatabaseHandler(LoadGameActivity.this);
+            loadGameAdapter = new LoadGameAdapter(LoadGameActivity.this, db);
 
             return null;
         }
@@ -85,11 +70,11 @@ public class LoadGameActivity extends AppCompatActivity
             GridView gridView = (GridView) findViewById(R.id.gridview);
             TextView emptyPlaceholderView = (TextView) findViewById(R.id.emptyelement);
             gridView.setEmptyView(emptyPlaceholderView);
-            gridView.setAdapter(loadGameAdapterTest2);
+            gridView.setAdapter(loadGameAdapter);
             progressBar.setVisibility(View.GONE);
         }
     }
-*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

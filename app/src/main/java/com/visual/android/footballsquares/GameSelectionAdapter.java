@@ -33,9 +33,9 @@ public class GameSelectionAdapter extends ArrayAdapter<Game> {
 
         Game game = items.get(position);
 
+        final TextView gameName = (TextView)convertView.findViewById(R.id.nameItem);
         if (game != null) {
-            final TextView tv = (TextView)convertView.findViewById(R.id.nameItem);
-            tv.setOnClickListener(new View.OnClickListener() {
+            gameName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -48,7 +48,6 @@ public class GameSelectionAdapter extends ArrayAdapter<Game> {
                 }
             });
         }
-        TextView gameName = (TextView)convertView.findViewById(R.id.nameItem);
         gameName.setText(game.getNFLHomeTeamName() + " vs. " + game.getNFLAwayTeamName());
         TextView date = (TextView)convertView.findViewById(R.id.date);
         date.setText(game.getDate());

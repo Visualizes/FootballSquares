@@ -14,18 +14,27 @@ public class UserChoices implements Serializable{
     public List<String> namesOnBoard = new ArrayList<>();
     public List<Integer> row = new ArrayList<>();
     public List<Integer> column = new ArrayList<>();
-    public byte[] screenshot;
+    private LoadGame loadGame;
 
     public UserChoices(){
 
     }
 
-    public UserChoices(Game game, List<String> arrayOfNames, List<String> namesOnBoard, List<Integer> row, List<Integer> column){
+    public UserChoices(Game game, List<String> arrayOfNames, List<String> namesOnBoard, List<Integer> row, List<Integer> column, LoadGame loadGame){
         this.game = game;
         this.arrayOfNames = arrayOfNames;
         this.namesOnBoard = namesOnBoard;
         this.row = row;
         this.column = column;
+        this.loadGame = loadGame;
+    }
+
+    public void setLoadGame(LoadGame loadGame) {
+        this.loadGame = loadGame;
+    }
+
+    public LoadGame getLoadGame() {
+        return loadGame;
     }
 
     public List<Integer> getRow() {
@@ -68,11 +77,4 @@ public class UserChoices implements Serializable{
         this.game = game;
     }
 
-    public void setScreenshot(byte[] screenshot){
-        this.screenshot = screenshot;
-    }
-
-    public byte[] getScreenshot() {
-        return screenshot;
-    }
 }

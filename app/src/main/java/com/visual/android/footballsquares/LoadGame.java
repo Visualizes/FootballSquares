@@ -1,12 +1,14 @@
 package com.visual.android.footballsquares;
 
+import java.io.Serializable;
+
 /**
  * Created by RamiK on 8/27/2016.
  */
-public class LoadGame {
+public class LoadGame implements Serializable {
 
     private String name;
-    private String description;
+    private String description = "";
 
     public LoadGame (String name, String description){
         this.name = name;

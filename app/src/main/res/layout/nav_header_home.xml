@@ -16,7 +16,7 @@
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:background="@drawable/homelogotest_2" />
+        android:background="@drawable/homelogo_5" />
 
     <TextView
         android:layout_width="match_parent"

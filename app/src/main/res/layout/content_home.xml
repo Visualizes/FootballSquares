@@ -25,7 +25,7 @@
     <ImageView
         android:layout_margin="24dp"
         android:layout_gravity="center"
-        android:background="@drawable/homelogotest_2"
+        android:background="@drawable/homelogo_5"
         android:layout_width="144dp"
         android:layout_height="144dp" />
 

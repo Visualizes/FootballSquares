@@ -3,7 +3,7 @@
     <item
         android:title="Edit"/>
     <item
-        android:title="Delete"/>
-    <item
         android:title="Details"/>
+    <item
+        android:title="Delete"/>
 </menu>

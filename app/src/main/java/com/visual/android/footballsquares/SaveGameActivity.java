@@ -3,6 +3,7 @@ package com.visual.android.footballsquares;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.Map;
 
@@ -77,6 +80,49 @@ public class SaveGameActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (id == R.id.savegame){
+            EditText saveName = (EditText) findViewById(R.id.saveName);
+            EditText saveDescription = (EditText) findViewById(R.id.saveDescription);
+            final String name = saveName.getText().toString();
+            final String description = saveDescription.getText().toString();
+
+            LoadGame loadGame = new LoadGame(name, description);
+
+            userChoices.setLoadGame(loadGame);
+
+            final DatabaseHandler db = new DatabaseHandler(this);
+            if (db.addLocalGame(userChoices)){
+                Intent i = new Intent(this, StartingScreenActivity.class);
+                i.putExtra("UserChoices", userChoices);
+                startActivity(i);
+            }
+            else {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+                dialogBuilder.setTitle("Are you sure?");
+                dialogBuilder.setMessage("Game already exists. Would you like to overwrite it?");
+
+                dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        db.deleteLocalGame(userChoices.getLoadGame().getName());
+                        db.addLocalGame(userChoices);
+                        Intent i = new Intent(SaveGameActivity.this, StartingScreenActivity.class);
+                        i.putExtra("UserChoices", userChoices);
+                        startActivity(i);
+
+                    }
+                });
+                dialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //pass
+                    }
+                });
+                final AlertDialog dialog = dialogBuilder.create();
+                dialog.show();
+            }
+
+        }
+
 /*
         if (id == R.id.savegame){
             final TinyDB tinyDB = new TinyDB(this);

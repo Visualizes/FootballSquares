@@ -19,14 +19,14 @@
     <ImageButton
         android:id="@+id/editName"
         android:layout_margin="4dp"
-        android:background="@drawable/edit"
+        android:background="@drawable/ic_edit_white_48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <ImageButton
         android:id="@+id/removeName"
         android:layout_margin="4dp"
-        android:background="@drawable/delete"
+        android:background="@drawable/ic_delete_white_48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
