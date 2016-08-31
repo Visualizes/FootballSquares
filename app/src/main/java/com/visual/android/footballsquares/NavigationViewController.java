@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class NavigationViewController {
 
+    private MenuItem nameInput;
     private MenuItem boardSetUp;
     private MenuItem mainBoard;
     private MenuItem selectGame;
@@ -41,6 +42,7 @@ public class NavigationViewController {
         selectGame = menu.findItem(R.id.nav_game);
         saveGame = menu.findItem(R.id.nav_save);
         shareGame = menu.findItem(R.id.nav_share);
+        nameInput = menu.findItem(R.id.nav_add_people);
 
         enable();
 

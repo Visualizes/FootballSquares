@@ -20,12 +20,12 @@ import java.net.URL;
 
 public class Triton{
 
-    private static Callback callback;
-    private static String function;
-    private static int responseCode;
+    private Callback callback;
+    private String function;
+    private int responseCode;
 
     public Triton(String function){
-        Triton.function = function;
+        this.function = function;
     }
 
     public void execute(){
@@ -37,16 +37,16 @@ public class Triton{
     }
 
     public void execute(Callback callback){
-        Triton.callback = callback;
+        this.callback = callback;
         new async().execute();
     }
 
     public void execute(Callback callback, String... args){
-        Triton.callback = callback;
+        this.callback = callback;
         new async().execute(args);
     }
 
-    private static class async extends AsyncTask<String, Void, JSONObject>{
+    private class async extends AsyncTask<String, Void, JSONObject>{
 
         @Override
         protected JSONObject doInBackground(String... params) {

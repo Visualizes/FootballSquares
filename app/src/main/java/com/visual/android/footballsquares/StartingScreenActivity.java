@@ -34,13 +34,11 @@ public class StartingScreenActivity extends AppCompatActivity
             userChoices = (UserChoices) extras.get("UserChoices");
             if (userChoices == null) {
                 //if userchoices was null for whatever reason, create new
-                System.out.println("xyy");
                 userChoices = new UserChoices();
                 new GameInformation();
             }
         }
         else{
-            System.out.println("Xxxx");
             //if there was not a previous activity, create new
             userChoices = new UserChoices();
             new GameInformation();
@@ -60,7 +58,6 @@ public class StartingScreenActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
 
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_home);
 /*

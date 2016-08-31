@@ -46,15 +46,9 @@ public class JoinGameActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
                 Utils.hideKeyboard(JoinGameActivity.this);
             }
         };
@@ -83,6 +77,7 @@ public class JoinGameActivity extends AppCompatActivity
                                 userChoices.setNamesOnBoard(convertJSONArrayToListSTR(array.getJSONArray("namesonboard")));
                                 userChoices.setRow(convertJSONArrayToListINT(array.getJSONArray("row")));
                                 userChoices.setColumn(convertJSONArrayToListINT(array.getJSONArray("col")));
+                                Toast.makeText(JoinGameActivity.this, "Game joined", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(JoinGameActivity.this, StartingScreenActivity.class);
                                 i.putExtra("UserChoices", userChoices);
                                 startActivity(i);
