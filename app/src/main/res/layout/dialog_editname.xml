@@ -7,13 +7,13 @@
     android:layout_height="match_parent">
 
     <EditText
+        android:selectAllOnFocus="true"
         android:inputType="text"
         android:theme="@style/App_EditTextStyle"
         android:layout_marginTop="5dp"
         android:padding="4dp"
         android:layout_marginLeft="19dp"
         android:layout_marginRight="17dp"
-        android:hint="Name"
         android:lines="1"
         android:maxLength="40"
         android:id="@+id/editName"

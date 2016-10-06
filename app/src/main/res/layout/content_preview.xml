@@ -25,7 +25,7 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:id="@+id/gametext"
-        android:textSize="30dp"
+        android:textSize="@dimen/big_screen_dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

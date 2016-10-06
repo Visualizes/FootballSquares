@@ -5,4 +5,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="help_one">"The \"Name Input\" page is where you add the names of the players. There requires a minimum " +
+        "of two people to start a game. To add a name, enter a name and press the \"+\" button on the bottom right corner " +
+        "of the screen. To edit a name, press the pencil icon and to delete a name, press the garbage icon."</string>
+    <string name="help_two">"The "Board Setup" page is where you add names to the board. Every time you put a name down, it " +
+        "becomes the next player's turn. To freeze a turn and fill multiple spots with a single player, use the \"Freeze Turn\" button. " +
+        "To skip ahead and go to the next player's turn, use the \"Skip Turn\" button. If you want to quickly fill the board " +
+        "randomly and evenly, use the \"Fill Board\" button. To remove a name, use "Delete" and press the name you wish to delete.</string>
+    <string name="help_three">"The \"Game Selection\" page is where you select the game. Here, you will see all the games of the current week " +
+        "for the NFL season. Simply press on the game you want and you'll be taken to the next page."</string>
+    <string name="help_four">"The row and column that belong to the teams will be assigned random numbers from 0 to 9 " +
+        "and the numbers will be color coded to the team's colors. The winner is chosen automatically " +
+        "by using the last number in each of the teams' score, and plotting those numbers on the grid and " +
+        "seeing which square intersects those two numbers. The app tracks the score in real-time, so when " +
+        "the score changes, the yellow box will update and move to the next winner until the game is over. " +
+        "Using the drop down menu, you can generate new numbers for the row and column, display which team belong to the row or the " +
+        "column, and display a live score of the game."</string>
 </resources>

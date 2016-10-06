@@ -30,7 +30,7 @@
     <TextView
         android:visibility="gone"
         android:gravity="center|top"
-        android:textSize="24dp"
+        android:textSize="@dimen/small_screen_dp"
         android:textColor="@color/white"
         android:text="No games found."
         android:id="@+id/empty"

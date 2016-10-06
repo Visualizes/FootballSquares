@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:background="@color/green"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_about"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="@dimen/small_screen_dp"
+        android:textColor="@color/white"
+        android:text="Version: 5.0.1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/small_screen_dp"
+        android:textColor="@color/white"
+        android:text="Coded and designed by Rami Khadder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/small_screen_dp"
+        android:textColor="@color/white"
+        android:text="Email: RamiKDeveloper@gmail.com"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/small_screen_dp"
+            android:textColor="@color/white"
+            android:text="Special thanks to: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textStyle="italic"
+            android:id="@+id/icons8"
+            android:textSize="@dimen/small_screen_dp"
+            android:textColor="@color/white"
+            android:text="www.icons8.com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/Divider" />
+
+    <TextView
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/white"
+        android:text="Do you like this app? If so, please help me and rate this app in the market."
+        android:textSize="@dimen/small_screen_dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/rateButton"
+        android:layout_marginBottom="24dp"
+        android:textSize="@dimen/small_screen_dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:text="Rate"
+        android:background="@drawable/darktolightorange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/white"
+        android:text="Don't you like something or do you have an idea for improvement?"
+        android:textSize="@dimen/small_screen_dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/feedbackButton"
+        android:textSize="@dimen/small_screen_dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:text="Feedback"
+        android:background="@drawable/darktolightorange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

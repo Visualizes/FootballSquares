@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/green"
+    tools:showIn="@layout/app_bar_feedback_report_error">
+
+    <TextView
+        android:textColor="@color/white"
+        android:text="Email (Required):"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:textSize="@dimen/small_screen_dp"
+        android:textColor="@color/white"
+        android:inputType="text"
+        android:layout_marginTop="4dp"
+        android:id="@+id/email"
+        android:padding="4dp"
+        android:background="@color/lightgreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="32dp"
+        android:id="@+id/description"
+        android:textColor="@color/white"
+        android:text="Feedback/Error:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:textSize="@dimen/small_screen_dp"
+        android:id="@+id/feedbackOrError"
+        android:layout_marginTop="4dp"
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:padding="4dp"
+        android:maxLength="250"
+        android:background="@color/lightgreen"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:text="250"
+        android:id="@+id/textCounter"
+        android:textColor="@color/white"
+        android:padding="4dp"
+        android:gravity="right|end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

@@ -14,7 +14,7 @@
     <TextView
         android:text="Enter Code:"
         android:textColor="@color/white"
-        android:textSize="26dp"
+        android:textSize="@dimen/small_screen_dp"
         android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -23,7 +23,7 @@
         android:textColor="@color/white"
         android:padding="4dp"
         android:layout_marginBottom="8dp"
-        android:textSize="23dp"
+        android:textSize="@dimen/small_screen_dp"
         android:id="@+id/code"
         android:background="@color/lightgreen"
         android:layout_gravity="center"
@@ -31,13 +31,15 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:layout_marginTop="8dp"
         android:textAllCaps="false"
         android:padding="4dp"
-        android:textSize="20dp"
+        android:textSize="@dimen/small_screen_dp"
         android:textColor="@color/white"
         android:background="@drawable/darktolightorange"
         android:id="@+id/confirm"
         android:text="Join Game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>

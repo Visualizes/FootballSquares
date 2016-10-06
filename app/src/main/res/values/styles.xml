@@ -10,6 +10,10 @@
         <item name="android:alertDialogTheme">@style/BaseDialogTheme</item>
     </style>
 
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@layout/splash_screen</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

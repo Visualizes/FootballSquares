@@ -28,7 +28,7 @@
         android:inputType="text"
         android:theme="@style/App_EditTextStyle"
         android:lines="1"
-        android:maxLength="40"
+        android:maxLength="15"
         android:id="@+id/saveName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -41,13 +41,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:padding="8dp"
+    <com.visual.android.superbowlsquares.ActionEditText
         android:textColor="@color/white"
+        android:padding="8dp"
         android:background="@color/lightgreen"
+        android:maxLength="150"
+        android:theme="@style/App_EditTextStyle"
         android:gravity="top"
-        android:lines="3"
+        android:inputType="textMultiLine"
+        android:imeOptions="actionDone"
+        android:scrollHorizontally="false"
         android:id="@+id/saveDescription"
+        android:layout_width="match_parent"
+        android:layout_height="115dp" />
+
+    <TextView
+        android:id="@+id/textCounter"
+        android:gravity="end"
+        android:text="150"
+        android:padding="4dp"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
