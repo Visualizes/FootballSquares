@@ -155,7 +155,6 @@ public class RetrieveAllGames implements Serializable {
                     array.add(m.group(1));
             }
         }
-        System.out.println(array);
     }
 
     private String getFirstTeamName(String str){
@@ -163,7 +162,6 @@ public class RetrieveAllGames implements Serializable {
         int index = str.indexOf("-");
         str = str.substring(index + 1);
         index = str.indexOf("-");
-        System.out.println(str + "xx");
         return str.substring(0,1).toUpperCase() + str.substring(1, index);
 
     }

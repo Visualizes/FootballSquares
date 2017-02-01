@@ -13,6 +13,10 @@ public class Game implements Serializable {
     public int awayScore;
     public String date;
 
+    public Game(){
+        //TODO: Auto-generated empty constructor for FireBase
+    }
+
     public Game(String homeName, String awayName, int homeScore, int awayScore, String date){
         this.homeName = homeName;
         this.awayName = awayName;

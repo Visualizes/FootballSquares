@@ -51,6 +51,7 @@ public class LoadGameAdapter extends ArrayAdapter<UserChoices> {
         final TextView loadName = (TextView) convertView.findViewById(R.id.loadName);
         TextView loadDescription = (TextView) convertView.findViewById(R.id.loadDescription);
         final ImageButton dropDownMenu = (ImageButton) convertView.findViewById(R.id.loadDropdown);
+        final LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.linearlayout);
 
 
         System.out.println("DB: " + db.getLocalGamesCount());
@@ -68,7 +69,7 @@ public class LoadGameAdapter extends ArrayAdapter<UserChoices> {
             System.out.println("NOT NULL");
             System.out.println(item.getLoadGame().getName());
 
-            loadName.setOnClickListener(new View.OnClickListener() {
+            linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getContext(), loadName.getText().toString() + " loaded", Toast.LENGTH_SHORT).show();

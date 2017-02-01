@@ -54,6 +54,7 @@ public class BoardSetUpActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_set_up);
 
         initializeBoard();
+        setRowColNumbers();
 
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_set_up);
 
@@ -62,6 +63,21 @@ public class BoardSetUpActivity extends AppCompatActivity
     }//onCreate end
 
 
+    private void setRowColNumbers(){
+
+        if (userChoices.getRow().size() != 10 && userChoices.getColumn().size() != 10) {
+            for (int a = 0; a < 10; a++) {
+                userChoices.getRow().add(a);
+                userChoices.getColumn().add(a);
+            }
+        }
+
+        //Random number generator for row
+        Collections.shuffle(userChoices.getRow());
+        //Random number generator for column
+        Collections.shuffle(userChoices.getColumn());
+
+    }
 
     private void initializeBoard(){
 

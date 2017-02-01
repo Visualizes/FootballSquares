@@ -38,6 +38,7 @@ public class MainBoardActivity extends AppCompatActivity
         super.onDestroy();
         RetrieveFootballDataTask.SLEEP_TIME = 15000;
         System.out.println("GAME DESTROYED!!");
+        getIntent().putExtra("UserChoices", userChoices);
         //RecursiveRetrieveScoreTask.endRecursion();
     }
 
@@ -46,24 +47,34 @@ public class MainBoardActivity extends AppCompatActivity
         super.onPause();
         RetrieveFootballDataTask.SLEEP_TIME = 15000;
         System.out.println("GAME PAUSED!!");
+        getIntent().putExtra("UserChoices", userChoices);
         //RecursiveRetrieveScoreTask.endRecursion();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        RetrieveFootballDataTask.SLEEP_TIME = 2000;
-        executeRecursiveRetrieveScoreTask();
-        System.out.println("GAME RESUMED!!");
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        //updates bundle with updated userchoices
+        savedInstanceState.putSerializable("UserChoices", userChoices);
+        System.out.println("RESTORE INSTANCE STATE!!");
+        System.out.println(userChoices.getRow());
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainboard);
+        System.out.println("GAME CREATED!!");
 
         Bundle extras = getIntent().getExtras();
-        userChoices = (UserChoices)extras.get("UserChoices");
+        if (extras != null) {
+            userChoices = (UserChoices) extras.get("UserChoices");
+        } else{
+            System.out.println("BUNDLE IS NULL");
+        }
+
+        RetrieveFootballDataTask.SLEEP_TIME = 2000;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,6 +92,12 @@ public class MainBoardActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_main);
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_main);
 
+        initializeBoard();
+        executeRecursiveRetrieveScoreTask();
+
+    }//onCreate end
+
+    private void initializeBoard(){
         TableLayout layout = (TableLayout) findViewById(R.id.table);
         TextView[][] board = new TextView[10][10];
         TableRow[] rows = new TableRow[11];
@@ -88,8 +105,7 @@ public class MainBoardActivity extends AppCompatActivity
         mainBoardController = new MainBoardController(layout, board, rows, userChoices);
         mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-
-    }//onCreate end
+    }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {

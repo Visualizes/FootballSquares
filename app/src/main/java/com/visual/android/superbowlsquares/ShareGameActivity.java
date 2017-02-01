@@ -22,6 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,23 +77,9 @@ public class ShareGameActivity extends AppCompatActivity
         SecureRandom random = new SecureRandom();
         bytes = new byte[20];
         random.nextBytes(bytes);
-        try {
-            final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("UUID", bytes.toString().substring(3));
-            jsonObject.put("HomeTeamName", userChoices.getGame().getNFLHomeTeamName());
-            jsonObject.put("AwayTeamName", userChoices.getGame().getNFLAwayTeamName());
-            jsonObject.put("HomeTeamScore", userChoices.getGame().getHomeTeamScore());
-            jsonObject.put("AwayTeamScore", userChoices.getGame().getAwayTeamScore());
-            jsonObject.put("DateOfGame", userChoices.getGame().getDate());
-            jsonObject.put("Names", strArrayToJSON(userChoices.getArrayOfNames()));
-            jsonObject.put("NamesOnBoard", strArrayToJSON(userChoices.getNamesOnBoard()));
-            jsonObject.put("Row", intArrayToJSON(userChoices.getRow()));
-            jsonObject.put("Col", intArrayToJSON(userChoices.getColumn()));
-            shareGameWithTriton(jsonObject);
 
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
+        progressBar.setVisibility(View.VISIBLE);
+        write();
 
         ImageButton sms = (ImageButton) findViewById(R.id.share_sms);
         sms.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +128,30 @@ public class ShareGameActivity extends AppCompatActivity
 
     }
 
+    private void write(){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("games").child(bytes.toString().substring(3)).setValue(userChoices, new DatabaseReference.CompletionListener() {
+            public void onComplete(DatabaseError error, DatabaseReference ref) {
+                progressBar.setVisibility(View.GONE);
+                System.out.println("ERROR: " + error);
+                if (error == null){
+                    code.setText(bytes.toString().substring(3));
+                }
+                else {
+                    retry.setVisibility(View.VISIBLE);
+                    retry.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            retry.setVisibility(View.INVISIBLE);
+                            progressBar.setVisibility(View.VISIBLE);
+                            write();
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     private void sendSMS() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) // At least KitKat
         {
@@ -163,53 +177,6 @@ public class ShareGameActivity extends AppCompatActivity
             smsIntent.putExtra("sms_body","message");
             startActivity(smsIntent);
         }
-    }
-
-    private void shareGameWithTriton(final JSONObject jsonObject){
-        new Triton("put").execute(new Callback() {
-            @Override
-            public void call(JSONObject array) {
-                try {
-                    if (array.getInt("responseCode") == 200) {
-                        progressBar.setVisibility(View.GONE);
-                        code.setText(bytes.toString().substring(3));
-                        code.setTypeface(null, Typeface.BOLD);
-                    }
-                    else {
-                        retry.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
-                        retry.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                retry.setVisibility(View.INVISIBLE);
-                                progressBar.setVisibility(View.VISIBLE);
-                                shareGameWithTriton(jsonObject);
-                            }
-                        });
-                    }
-                } catch (JSONException e){
-                    e.printStackTrace();
-
-
-                }
-            }
-        }, jsonObject.toString());
-    }
-
-    private JSONArray strArrayToJSON(List<String> array){
-        JSONArray jsonArray = new JSONArray();
-        for (String element : array){
-            jsonArray.put(element);
-        }
-        return jsonArray;
-    }
-
-    private JSONArray intArrayToJSON(List<Integer> array){
-        JSONArray jsonArray = new JSONArray();
-        for (int element : array){
-            jsonArray.put(element);
-        }
-        return jsonArray;
     }
 
     @Override

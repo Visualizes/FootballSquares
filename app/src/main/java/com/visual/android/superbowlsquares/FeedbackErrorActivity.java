@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -84,23 +87,14 @@ public class FeedbackErrorActivity extends AppCompatActivity
             if (!description.getText().toString().equals("")) {
                 if (isEmailValid(email.getText().toString())) {
 
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("email", email.getText().toString());
-                        jsonObject.put("description", description.getText().toString());
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mDatabase.child("feedback_error").child(fix(email.getText().toString())).setValue(description.getText().toString());
 
-                        new Triton("submit").execute(new Callback() {
-                            @Override
-                            public void call(JSONObject array) {
-                                Intent i = new Intent(FeedbackErrorActivity.this, StartingScreenActivity.class);
-                                i.putExtra("UserChoices", userChoices);
-                                startActivity(i);
-                                Toast.makeText(FeedbackErrorActivity.this, "Report sent!", Toast.LENGTH_SHORT).show();
-                            }
-                        }, jsonObject.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    Intent i = new Intent(FeedbackErrorActivity.this, StartingScreenActivity.class);
+                    i.putExtra("UserChoices", userChoices);
+                    startActivity(i);
+                    Toast.makeText(FeedbackErrorActivity.this, "Report sent!", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(FeedbackErrorActivity.this, "Email is invalid", Toast.LENGTH_SHORT).show();
                 }
@@ -113,6 +107,15 @@ public class FeedbackErrorActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private String fix(String input){
+        return input.replaceAll("#", "(HASHTAG)")
+                .replaceAll("\\.", "(DOT)")
+                .replaceAll("\\$", "(DOLLARSIGN)")
+                .replaceAll("\\[", "(OPEN_BRACKET)")
+                .replaceAll("\\]", "(CLOSED_BRACKET)");
+
+
+    }
 
     @Override
     public void onBackPressed() {

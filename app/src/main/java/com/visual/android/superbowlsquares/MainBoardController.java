@@ -49,12 +49,10 @@ public class MainBoardController {
     private void setUpBoard(){
         //sets the ints of the arrays equal to each respective child
         for (int i = 0; i < 10; i++){
-            System.out.println(i);
             Row_One_Column[i] = (TextView)rows[0].getChildAt(i + 1);
             Column_One_Row[i] = (TextView)rows[i+1].getChildAt(0);
             for (int y = 0; y < 10; y++) {
                 int position = (i*10) + y;
-                Log.d("position", String.valueOf(position));
                 board[i][y] = (TextView) rows[i+1].getChildAt(y+1);
                 board[i][y].setText(userChoices.getNamesOnBoard().get(position));
             }

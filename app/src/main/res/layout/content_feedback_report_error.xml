@@ -17,9 +17,10 @@
         android:layout_height="wrap_content" />
 
     <EditText
+
         android:textSize="@dimen/small_screen_dp"
         android:textColor="@color/white"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:layout_marginTop="4dp"
         android:id="@+id/email"
         android:padding="4dp"

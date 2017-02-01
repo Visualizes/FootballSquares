@@ -10,6 +10,10 @@ public class LoadGame implements Serializable {
     private String name;
     private String description = "";
 
+    public LoadGame(){
+        //TODO: Auto-generated empty constructor for FireBase
+    }
+
     public LoadGame (String name, String description){
         this.name = name;
         this.description = description;

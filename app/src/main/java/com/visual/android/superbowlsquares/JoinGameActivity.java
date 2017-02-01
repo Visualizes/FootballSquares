@@ -14,6 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,33 +67,37 @@ public class JoinGameActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_join);
         navigationViewController = new NavigationViewController(navigationView, userChoices, R.id.nav_join);
 
+        final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
         Button joinGame = (Button) findViewById(R.id.confirm);
         joinGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = (EditText) findViewById(R.id.code);
+                final EditText et = (EditText) findViewById(R.id.code);
                 if (!et.getText().toString().equals("")){
-                    new Triton("get").execute(new Callback() {
+                    Query query =  mDatabaseReference.child("games").child(et.getText().toString());
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void call(JSONObject array) {
-                            try{
-                                Game game = new Game(array.getString("hometeamname"), array.getString("awayteamname"),
-                                        array.getInt("hometeamscore"), array.getInt("awayteamscore"), array.getString("dateofgame"));
-                                userChoices.setGame(game);
-                                userChoices.setArrayOfNames(convertJSONArrayToListSTR(array.getJSONArray("names")));
-                                userChoices.setNamesOnBoard(convertJSONArrayToListSTR(array.getJSONArray("namesonboard")));
-                                userChoices.setRow(convertJSONArrayToListINT(array.getJSONArray("row")));
-                                userChoices.setColumn(convertJSONArrayToListINT(array.getJSONArray("col")));
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            UserChoices userChoices = dataSnapshot.getValue(UserChoices.class);
+                            if (userChoices != null) {
                                 Toast.makeText(JoinGameActivity.this, "Game joined", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(JoinGameActivity.this, StartingScreenActivity.class);
                                 i.putExtra("UserChoices", userChoices);
                                 startActivity(i);
-                            } catch (JSONException e){
-                                e.printStackTrace();
-                                Toast.makeText(JoinGameActivity.this, "Game not found", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(JoinGameActivity.this, "Error finding game: " + et.getText().toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
-                    },"{\"UUID\":\"" + et.getText().toString() + "\"}");
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            //TODO: Auto-generated method stub
+                            Toast.makeText(JoinGameActivity.this, "Error finding game: " + et.getText().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else{
+                    Toast.makeText(JoinGameActivity.this, "Please enter a code.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

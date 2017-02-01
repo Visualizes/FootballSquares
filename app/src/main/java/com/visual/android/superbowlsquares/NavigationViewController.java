@@ -23,9 +23,12 @@ public class NavigationViewController {
 
 
     public void updateItemSelected(){
-        listOfNavViews.get(1).setCheckedItem(idOfNavItems.get(1));
-        listOfNavViews.remove(0);
-        idOfNavItems.remove(0);
+        if (listOfNavViews.size() > 0) {
+            listOfNavViews.get(1).setCheckedItem(idOfNavItems.get(1));
+            listOfNavViews.remove(0);
+            idOfNavItems.remove(0);
+        }
+
     }
 
     public NavigationViewController(NavigationView navigationView, UserChoices userChoices, int id){
